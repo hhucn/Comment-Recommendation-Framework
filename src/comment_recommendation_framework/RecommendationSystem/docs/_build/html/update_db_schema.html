@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Database Schema &mdash; Comment Recommendation Framework 0.11.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Update User Interface" href="user_interface.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Comment Recommendation Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Update Database Schema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#update-the-database-schema">1.) Update the Database Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-add-new-database-utils-methods">Optional: Add new Database Utils Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-the-news-agency-scraper-pipeline-and-article-data-item">2.) Update the News Agency Scraper Pipeline and Article Data Item</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#items">Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pipeline">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-spyder">Update Spyder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#update-csv-reader">3.) Update CSV Reader</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_interface.html">Update User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">RecommendationSystem</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Comment Recommendation Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Update Database Schema</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/update_db_schema.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="update-database-schema">
+<h1>Update Database Schema<a class="headerlink" href="#update-database-schema" title="Permalink to this heading"></a></h1>
+<p>If you want to scrape and store other data from the articles and comments in your database, you can update the database
+schema and the pipeline methods to store the data in the database.</p>
+<p>Let’s add the author of the article and the comment to the nodes.</p>
+<section id="update-the-database-schema">
+<h2>1.) Update the Database Schema<a class="headerlink" href="#update-the-database-schema" title="Permalink to this heading"></a></h2>
+<p>In the first step, we have to update the classes defining the properties of the Neo4J nodes. For this, open <code class="docutils literal notranslate"><span class="pre">article</span></code>
+and <code class="docutils literal notranslate"><span class="pre">comment</span></code> in <code class="docutils literal notranslate"><span class="pre">DB/db_models</span></code>. Here, you see the classes defining the properties and the relationships of the nodes.</p>
+<a class="reference internal image-reference" href="_images/DBSchema1.png"><img alt="_images/DBSchema1.png" src="_images/DBSchema1.png" style="width: 1000px;" /></a>
+<p>We want to add a new field or property for the author of the article in the <code class="docutils literal notranslate"><span class="pre">Article</span></code> class. Therefore, we write
+a new class variable in the <code class="docutils literal notranslate"><span class="pre">Article</span></code> class with a  <code class="docutils literal notranslate"><span class="pre">StringProperty</span></code>. This defines the value of the property.</p>
+<a class="reference internal image-reference" href="_images/DBSchema2.png"><img alt="_images/DBSchema2.png" src="_images/DBSchema2.png" style="width: 1000px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that the properties in the database are named exactly as you name them here.</p>
+</div>
+<p>To add a new property to the comment node, you proceed exactly as you did in the <code class="docutils literal notranslate"><span class="pre">Article</span></code> class and add a new field
+to the <code class="docutils literal notranslate"><span class="pre">Comment</span></code> class in <code class="docutils literal notranslate"><span class="pre">DB/db_models/comment</span></code>.</p>
+<a class="reference internal image-reference" href="_images/DBSchema3.png"><img alt="_images/DBSchema3.png" src="_images/DBSchema3.png" style="width: 1000px;" /></a>
+<a class="reference internal image-reference" href="_images/DBSchema4.png"><img alt="_images/DBSchema4.png" src="_images/DBSchema4.png" style="width: 1000px;" /></a>
+</section>
+<section id="optional-add-new-database-utils-methods">
+<h2>Optional: Add new Database Utils Methods<a class="headerlink" href="#optional-add-new-database-utils-methods" title="Permalink to this heading"></a></h2>
+<p>If you would like to, now you can add some new utils methods to query nodes based on the changes you made to the properties.</p>
+<p>For example, in the previous step, we added the property <code class="docutils literal notranslate"><span class="pre">author</span></code> to the <code class="docutils literal notranslate"><span class="pre">Article</span></code> node. Maybe, we would like to
+get all articles written by this author. To do so, we add a new  method to <code class="docutils literal notranslate"><span class="pre">DB/utils</span></code> to query these nodes.</p>
+<p>The method would look like this:</p>
+<a class="reference internal image-reference" href="_images/DBUtils1.png"><img alt="_images/DBUtils1.png" src="_images/DBUtils1.png" style="width: 1000px;" /></a>
+<p>If you are not familiar with Neo4J Cypher Queries and neomodel, let’s look at this together.
+First, we call <code class="docutils literal notranslate"><span class="pre">db.cypher_query</span></code> with a cypher query as a format string. This methods send the query to the database and returns two values.
+However, we are only interested in the first, the <code class="docutils literal notranslate"><span class="pre">results</span></code>.</p>
+<p>The cypher query consists of three parts:</p>
+<p>1.) The <code class="docutils literal notranslate"><span class="pre">MATCH</span></code> part. Here, we define what type of structure we look for. In our case a singe article node.</p>
+<p>2.) The <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> part. Here, we narrow the result set with some conditions. In our case, we only want article nodes
+with a author named like the author we are looking for.</p>
+<p>3.) The <code class="docutils literal notranslate"><span class="pre">RETURN</span></code> part. Here, we specify what we would like to return from the database. In our case the complete article node.
+However, we could also only return some specific properties here.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To learn more about Neo4j Cyper Queries. Please visit (<a class="reference external" href="https://neo4j.com/developer/cypher/">https://neo4j.com/developer/cypher/</a>)</p>
+</div>
+<p>Then, if we found some article nodes written by the given author, we hand them over to the <code class="docutils literal notranslate"><span class="pre">__extract_results</span></code> method
+to inflate them. This means that we convert the result from raw neo4j driver to a object with the properties, we defined
+in <code class="docutils literal notranslate"><span class="pre">`Article`</span></code> class from the previous step.</p>
+</section>
+<section id="update-the-news-agency-scraper-pipeline-and-article-data-item">
+<h2>2.) Update the News Agency Scraper Pipeline and Article Data Item<a class="headerlink" href="#update-the-news-agency-scraper-pipeline-and-article-data-item" title="Permalink to this heading"></a></h2>
+<p>Next, we update the News Agency Scraper and for this, we have to update two files in <code class="docutils literal notranslate"><span class="pre">NewsAgencyScraper</span></code> <code class="docutils literal notranslate"><span class="pre">items</span></code> and <code class="docutils literal notranslate"><span class="pre">pipelines</span></code>. The first
+one defines the data structure where we store the data during the scraping process and the second one stores the items
+in the database.</p>
+<section id="items">
+<h3>Items<a class="headerlink" href="#items" title="Permalink to this heading"></a></h3>
+<p>The purpose of the <code class="docutils literal notranslate"><span class="pre">items</span></code> class is nearly the same as for <code class="docutils literal notranslate"><span class="pre">article</span></code> or <code class="docutils literal notranslate"><span class="pre">comment</span></code> in db models. We define the fields
+of our data structure where we store the data during the scraping process.</p>
+<p>At the moment our <code class="docutils literal notranslate"><span class="pre">ArticleDataItem</span></code> looks like this:</p>
+<a class="reference internal image-reference" href="_images/Items1.png"><img alt="_images/Items1.png" src="_images/Items1.png" style="width: 1000px;" /></a>
+<p>Now we add the new field we need to store the article author and the comment author.</p>
+<a class="reference internal image-reference" href="_images/Items2.png"><img alt="_images/Items2.png" src="_images/Items2.png" style="width: 1000px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To learn more about Items. Please refer to (<a class="reference external" href="https://docs.scrapy.org/en/latest/topics/items.html#declaring-fields">https://docs.scrapy.org/en/latest/topics/items.html#declaring-fields</a>)</p>
+</div>
+</section>
+<section id="pipeline">
+<h3>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this heading"></a></h3>
+<p>Next, we update the pipeline to store the values from our item in the database. For this, open the <code class="docutils literal notranslate"><span class="pre">pipelines</span></code> file.
+There you find the <code class="docutils literal notranslate"><span class="pre">ScraperPipeline</span></code> with the <code class="docutils literal notranslate"><span class="pre">process_item</span></code> method. This method is called for every item which
+always contains one article.</p>
+<a class="reference internal image-reference" href="_images/Pipeline2.png"><img alt="_images/Pipeline2.png" src="_images/Pipeline2.png" style="width: 1000px;" /></a>
+<p>We update the method by adding the <code class="docutils literal notranslate"><span class="pre">author</span></code> field to the <code class="docutils literal notranslate"><span class="pre">Article</span></code> and <code class="docutils literal notranslate"><span class="pre">Comment</span></code> constructor and assign the appropriate
+values from the <code class="docutils literal notranslate"><span class="pre">items</span></code> dict. Please note that different fields in the <code class="docutils literal notranslate"><span class="pre">items</span></code> dict are lists. Therefore, we have to
+add the index to get the singe value from the fields. If you look closely you notice that we use the list data structure to store all comments
+that appeared under the article as a field called <code class="docutils literal notranslate"><span class="pre">comments</span></code>.</p>
+</section>
+<section id="update-spyder">
+<h3>Update Spyder<a class="headerlink" href="#update-spyder" title="Permalink to this heading"></a></h3>
+<p>The last thing here, you have to do is to update the spyder which scrapes the news agency site. Here, you have to store
+the new values <code class="docutils literal notranslate"><span class="pre">article_author</span></code> and <code class="docutils literal notranslate"><span class="pre">comment_author</span></code> in the <code class="docutils literal notranslate"><span class="pre">ItemLoader</span></code>.</p>
+</section>
+</section>
+<section id="update-csv-reader">
+<h2>3.) Update CSV Reader<a class="headerlink" href="#update-csv-reader" title="Permalink to this heading"></a></h2>
+<p>If you want to read other properties from you CSV files and store them in the database. You have to update two methods in
+<code class="docutils literal notranslate"><span class="pre">__store_article</span></code> and <code class="docutils literal notranslate"><span class="pre">__store_comment</span></code>. Here, you have to update the instantiation of <code class="docutils literal notranslate"><span class="pre">Article</span></code> and <code class="docutils literal notranslate"><span class="pre">Comment</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_interface.html" class="btn btn-neutral float-right" title="Update User Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Anonymous.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

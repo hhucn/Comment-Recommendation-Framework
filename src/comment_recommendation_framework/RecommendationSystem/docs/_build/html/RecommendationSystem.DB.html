@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecommendationSystem.DB package &mdash; Comment Recommendation Framework 0.11.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RecommendationSystem.DB.db_models package" href="RecommendationSystem.DB.db_models.html" />
+    <link rel="prev" title="RecommendationSystem.API.RESTApi package" href="RecommendationSystem.API.RESTApi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Comment Recommendation Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_db_schema.html">Update Database Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_interface.html">Update User Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">RecommendationSystem</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="RecommendationSystem.html">RecommendationSystem package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="RecommendationSystem.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.API.html">RecommendationSystem.API package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">RecommendationSystem.DB package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.Embedder.html">RecommendationSystem.Embedder package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.Model.html">RecommendationSystem.Model package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.NewsAgencyScraper.html">RecommendationSystem.NewsAgencyScraper package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.Read_CSV.html">RecommendationSystem.Read_CSV package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.docs.html">RecommendationSystem.docs package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.test.html">RecommendationSystem.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="RecommendationSystem.html#module-RecommendationSystem">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Comment Recommendation Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">RecommendationSystem</a> &raquo;</li>
+          <li><a href="RecommendationSystem.html">RecommendationSystem package</a> &raquo;</li>
+      <li>RecommendationSystem.DB package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/RecommendationSystem.DB.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="recommendationsystem-db-package">
+<h1>RecommendationSystem.DB package<a class="headerlink" href="#recommendationsystem-db-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="RecommendationSystem.DB.db_models.html">RecommendationSystem.DB.db_models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#module-RecommendationSystem.DB.db_models.article">RecommendationSystem.DB.db_models.article module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article"><code class="docutils literal notranslate"><span class="pre">Article</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Article.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article.article_id"><code class="docutils literal notranslate"><span class="pre">Article.article_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article.article_title"><code class="docutils literal notranslate"><span class="pre">Article.article_title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article.comment"><code class="docutils literal notranslate"><span class="pre">Article.comment</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article.embedding"><code class="docutils literal notranslate"><span class="pre">Article.embedding</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article.keywords"><code class="docutils literal notranslate"><span class="pre">Article.keywords</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article.news_agency"><code class="docutils literal notranslate"><span class="pre">Article.news_agency</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article.pub_date"><code class="docutils literal notranslate"><span class="pre">Article.pub_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article.url"><code class="docutils literal notranslate"><span class="pre">Article.url</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#module-RecommendationSystem.DB.db_models.comment">RecommendationSystem.DB.db_models.comment module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.comment.Comment"><code class="docutils literal notranslate"><span class="pre">Comment</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.comment.Comment.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Comment.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.comment.Comment.article"><code class="docutils literal notranslate"><span class="pre">Comment.article</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.comment.Comment.comment_id"><code class="docutils literal notranslate"><span class="pre">Comment.comment_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.comment.Comment.embedding"><code class="docutils literal notranslate"><span class="pre">Comment.embedding</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.comment.Comment.text"><code class="docutils literal notranslate"><span class="pre">Comment.text</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#module-RecommendationSystem.DB.db_models">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-RecommendationSystem.DB.utils">
+<span id="recommendationsystem-db-utils-module"></span><h2>RecommendationSystem.DB.utils module<a class="headerlink" href="#module-RecommendationSystem.DB.utils" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.DB.utils.get_all_article">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.DB.utils.</span></span><span class="sig-name descname"><span class="pre">get_all_article</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#RecommendationSystem.DB.utils.get_all_article" title="Permalink to this definition"></a></dt>
+<dd><p>Gets all article from the db which embedding is not null
+:return: All articles from the database whose embedding is not NULL</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.DB.utils.get_all_comments_for_given_article">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.DB.utils.</span></span><span class="sig-name descname"><span class="pre">get_all_comments_for_given_article</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">article</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article" title="RecommendationSystem.DB.db_models.article.Article"><span class="pre">Article</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.comment.Comment" title="RecommendationSystem.DB.db_models.comment.Comment"><span class="pre">Comment</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#RecommendationSystem.DB.utils.get_all_comments_for_given_article" title="Permalink to this definition"></a></dt>
+<dd><p>Returns all comments connected to the given article
+:param article: Article node
+:return: List of all comment nodes that are connected with the given article node</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.DB.utils.get_article_by_id">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.DB.utils.</span></span><span class="sig-name descname"><span class="pre">get_article_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">article_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article" title="RecommendationSystem.DB.db_models.article.Article"><span class="pre">Article</span></a></span></span><a class="headerlink" href="#RecommendationSystem.DB.utils.get_article_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a specific article by the given id
+:param article_id: ID of article node
+:return: Article node with given ID</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.DB.utils.get_article_by_title">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.DB.utils.</span></span><span class="sig-name descname"><span class="pre">get_article_by_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.article.Article" title="RecommendationSystem.DB.db_models.article.Article"><span class="pre">Article</span></a></span></span><a class="headerlink" href="#RecommendationSystem.DB.utils.get_article_by_title" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a specific article by the give title
+:param title: Title of the article
+:return: Article node with given title</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.DB.utils.get_articles_without_embedding">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.DB.utils.</span></span><span class="sig-name descname"><span class="pre">get_articles_without_embedding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RecommendationSystem.DB.utils.get_articles_without_embedding" title="Permalink to this definition"></a></dt>
+<dd><p>Gets all article without an embedding
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.DB.utils.get_comment_by_id">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.DB.utils.</span></span><span class="sig-name descname"><span class="pre">get_comment_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comment_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="RecommendationSystem.DB.db_models.html#RecommendationSystem.DB.db_models.comment.Comment" title="RecommendationSystem.DB.db_models.comment.Comment"><span class="pre">Comment</span></a></span></span><a class="headerlink" href="#RecommendationSystem.DB.utils.get_comment_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Gets a specific comment by the given id
+:param comment_id: ID of the comment
+:return: Comment node with given ID</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.DB.utils.get_comments_without_embedding">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.DB.utils.</span></span><span class="sig-name descname"><span class="pre">get_comments_without_embedding</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RecommendationSystem.DB.utils.get_comments_without_embedding" title="Permalink to this definition"></a></dt>
+<dd><p>Gets all comments without an embedding
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.DB.utils.run_cypher_query">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.DB.utils.</span></span><span class="sig-name descname"><span class="pre">run_cypher_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_type</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span></span></span><a class="headerlink" href="#RecommendationSystem.DB.utils.run_cypher_query" title="Permalink to this definition"></a></dt>
+<dd><p>Runs a give cypher query to handle special cases
+:param query: Cypher query string to extract specific data from the Neo4J database
+:param node_type: Type of the expected node to be returned
+:return: List of nodes for the given cypher query</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.DB.utils.update_node_with_embedding">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.DB.utils.</span></span><span class="sig-name descname"><span class="pre">update_node_with_embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StructuredNode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#RecommendationSystem.DB.utils.update_node_with_embedding" title="Permalink to this definition"></a></dt>
+<dd><p>Updates the given node with the given embedding
+:param node:
+:param embedding:
+:return:</p>
+</dd></dl>
+
+</section>
+<section id="module-RecommendationSystem.DB">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RecommendationSystem.DB" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="RecommendationSystem.API.RESTApi.html" class="btn btn-neutral float-left" title="RecommendationSystem.API.RESTApi package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="RecommendationSystem.DB.db_models.html" class="btn btn-neutral float-right" title="RecommendationSystem.DB.db_models package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Anonymous.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

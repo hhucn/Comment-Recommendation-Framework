@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update User Interface &mdash; Comment Recommendation Framework 0.11.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RecommendationSystem" href="modules.html" />
+    <link rel="prev" title="Update Database Schema" href="update_db_schema.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Comment Recommendation Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_db_schema.html">Update Database Schema</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Update User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">RecommendationSystem</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Comment Recommendation Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Update User Interface</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/user_interface.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="update-user-interface">
+<h1>Update User Interface<a class="headerlink" href="#update-user-interface" title="Permalink to this heading"></a></h1>
+<p>If you want to use another user-interface or change certain aspects of the chrome extensions, you have to update the
+<code class="docutils literal notranslate"><span class="pre">UI</span></code> folder.</p>
+<p>The chrome extension is build in a modular way to simplify customizations.</p>
+<p>For the user interface, we use React components
+to allow an easy replacement of certain aspectes of the user interface. You can find the different React components in the
+<code class="docutils literal notranslate"><span class="pre">src/components</span></code> folder.</p>
+<p>The communications with the API is done with <code class="docutils literal notranslate"><span class="pre">backgound.js</span></code> file in the <code class="docutils literal notranslate"><span class="pre">public</span></code> folder. Here, you can change
+the address of the API.</p>
+<a class="reference internal image-reference" href="_images/UserInterface1.png"><img alt="_images/UserInterface1.png" src="_images/UserInterface1.png" style="width: 1000px;" /></a>
+<p>The interaction with the comment section of the news agency site takes place in <code class="docutils literal notranslate"><span class="pre">contentScript.js</span></code> in the <code class="docutils literal notranslate"><span class="pre">public</span></code>
+folder. Here, we read the keywords of the news article and the comment the user has selected. If you want to change
+how the extension interacts with the site of the news agency, you do it here.</p>
+<a class="reference internal image-reference" href="_images/UserInterface2.png"><img alt="_images/UserInterface2.png" src="_images/UserInterface2.png" style="width: 1000px;" /></a>
+<p>After you have changed something in the <code class="docutils literal notranslate"><span class="pre">UI</span></code> folder, you have to build the extension every time. For this run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ npm run build
+</pre></div>
+</div>
+<p>You also have to reload the chrome extension in extension menu in your chromium browser and to reload the site you would
+like to interact with.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="update_db_schema.html" class="btn btn-neutral float-left" title="Update Database Schema" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="RecommendationSystem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Anonymous.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

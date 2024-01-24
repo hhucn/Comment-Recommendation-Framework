@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecommendationSystem.API package &mdash; Comment Recommendation Framework 0.11.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RecommendationSystem.API.API package" href="RecommendationSystem.API.API.html" />
+    <link rel="prev" title="RecommendationSystem package" href="RecommendationSystem.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Comment Recommendation Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_db_schema.html">Update Database Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_interface.html">Update User Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">RecommendationSystem</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="RecommendationSystem.html">RecommendationSystem package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="RecommendationSystem.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">RecommendationSystem.API package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.DB.html">RecommendationSystem.DB package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.Embedder.html">RecommendationSystem.Embedder package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.Model.html">RecommendationSystem.Model package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.NewsAgencyScraper.html">RecommendationSystem.NewsAgencyScraper package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.Read_CSV.html">RecommendationSystem.Read_CSV package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.docs.html">RecommendationSystem.docs package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.test.html">RecommendationSystem.test package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="RecommendationSystem.html#module-RecommendationSystem">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Comment Recommendation Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">RecommendationSystem</a> &raquo;</li>
+          <li><a href="RecommendationSystem.html">RecommendationSystem package</a> &raquo;</li>
+      <li>RecommendationSystem.API package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/RecommendationSystem.API.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="recommendationsystem-api-package">
+<h1>RecommendationSystem.API package<a class="headerlink" href="#recommendationsystem-api-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="RecommendationSystem.API.API.html">RecommendationSystem.API.API package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.API.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.API.html#recommendationsystem-api-api-asgi-module">RecommendationSystem.API.API.asgi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.API.html#module-RecommendationSystem.API.API.settings">RecommendationSystem.API.API.settings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.API.html#recommendationsystem-api-api-urls-module">RecommendationSystem.API.API.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.API.html#recommendationsystem-api-api-wsgi-module">RecommendationSystem.API.API.wsgi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.API.html#module-RecommendationSystem.API.API">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html">RecommendationSystem.API.RESTApi package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#module-RecommendationSystem.API.RESTApi.abstract_model">RecommendationSystem.API.RESTApi.abstract_model module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#RecommendationSystem.API.RESTApi.abstract_model.AbstractModel"><code class="docutils literal notranslate"><span class="pre">AbstractModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#RecommendationSystem.API.RESTApi.abstract_model.AbstractModel.get_recommendations"><code class="docutils literal notranslate"><span class="pre">AbstractModel.get_recommendations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#module-RecommendationSystem.API.RESTApi.apps">RecommendationSystem.API.RESTApi.apps module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#RecommendationSystem.API.RESTApi.apps.RestapiConfig"><code class="docutils literal notranslate"><span class="pre">RestapiConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#RecommendationSystem.API.RESTApi.apps.RestapiConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">RestapiConfig.default_auto_field</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#RecommendationSystem.API.RESTApi.apps.RestapiConfig.name"><code class="docutils literal notranslate"><span class="pre">RestapiConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#module-RecommendationSystem.API.RESTApi.urls">RecommendationSystem.API.RESTApi.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#module-RecommendationSystem.API.RESTApi.views">RecommendationSystem.API.RESTApi.views module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#RecommendationSystem.API.RESTApi.views.get_recommendations"><code class="docutils literal notranslate"><span class="pre">get_recommendations()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RecommendationSystem.API.RESTApi.html#module-RecommendationSystem.API.RESTApi">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-RecommendationSystem.API.manage">
+<span id="recommendationsystem-api-manage-module"></span><h2>RecommendationSystem.API.manage module<a class="headerlink" href="#module-RecommendationSystem.API.manage" title="Permalink to this heading"></a></h2>
+<p>Django’s command-line utility for administrative tasks.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="RecommendationSystem.API.manage.main">
+<span class="sig-prename descclassname"><span class="pre">RecommendationSystem.API.manage.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RecommendationSystem.API.manage.main" title="Permalink to this definition"></a></dt>
+<dd><p>Run administrative tasks.</p>
+</dd></dl>
+
+</section>
+<section id="module-RecommendationSystem.API">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RecommendationSystem.API" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="RecommendationSystem.html" class="btn btn-neutral float-left" title="RecommendationSystem package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="RecommendationSystem.API.API.html" class="btn btn-neutral float-right" title="RecommendationSystem.API.API package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Anonymous.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

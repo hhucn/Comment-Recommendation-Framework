@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started &mdash; Comment Recommendation Framework 0.11.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Update Database Schema" href="update_db_schema.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Comment Recommendation Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-build-the-package">Quick Start - Build the package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-use-the-package">Quick Start - Use the Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-an-env-file">Create an .env file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-recommender-system">Quick Start - Recommender System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-news-agency-scraper">Quick Start - News Agency Scraper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-compute-embeddings">Quick Start - Compute Embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-read-csv-dataset">Quick Start - Read CSV Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-user-interface">Quick Start - User Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update_db_schema.html">Update Database Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_interface.html">Update User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">RecommendationSystem</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Comment Recommendation Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+<p>The Comment Recommendation Framework is a framework that encourages rapid prototype development for comment recommendation
+systems. It takes care of most of the tedious work of setting up the infrastructure of a recommendation system that can
+be used in a real-world setting and additionally provides data import and collections modules, so you can focus on
+developing more sophisticated recommendation models.</p>
+<section id="quick-start-build-the-package">
+<h2>Quick Start - Build the package<a class="headerlink" href="#quick-start-build-the-package" title="Permalink to this heading"></a></h2>
+<p>We assume that you have installed Python and created a virtual environment.
+Then you run in the <cite>comment-recommendation-framework</cite> folder where the <cite>setup.py</cite> is:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python3 -m build
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please make sure that the <cite>build</cite> package is installed. Otherwise, you cannot build the package.</p>
+</div>
+</section>
+<section id="quick-start-use-the-package">
+<h2>Quick Start - Use the Package<a class="headerlink" href="#quick-start-use-the-package" title="Permalink to this heading"></a></h2>
+<p>Switch to the folder where you want to create your comment recommendation prototype and run:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install &lt;path_to_whl_file&gt;
+$ python3 -m comment_recommendation_framework
+</pre></div>
+</div>
+</div></blockquote>
+<p>The package then asks you different questions to determine which moduls you need.
+Af first, it asks you if you want to create the recommendation system template.
+Afterwards, it asks if you want to scrape news agencies to fill the database or if you want to import a csv dataset
+into the database.</p>
+</section>
+<section id="create-an-env-file">
+<h2>Create an .env file<a class="headerlink" href="#create-an-env-file" title="Permalink to this heading"></a></h2>
+<p>To run properly, the system needs some environment variables. Therefore, please add <code class="docutils literal notranslate"><span class="pre">.env</span></code> with the following values</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>NEO4J_PASSWORD= &lt;PASSWORD OF YOUR CHOICE&gt;</p></li>
+<li><p>NEO4J_BOLT_URL=’bolt://neo4j:&lt;NEO4J PASSWORD&gt;&#64;neo4j:7687’</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="quick-start-recommender-system">
+<h2>Quick Start - Recommender System<a class="headerlink" href="#quick-start-recommender-system" title="Permalink to this heading"></a></h2>
+<p>The package asks you if you want to create a template project.
+If you answer with yes you will get complete recommendation
+systems where you only have to add the recommendation model in <code class="docutils literal notranslate"><span class="pre">model.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">Model</span></code> folder. You can add here
+any model you want, it only has to use the interface method <code class="docutils literal notranslate"><span class="pre">get_recommendations</span></code> which returns a list of strings
+(the recommendations).</p>
+<p>Then you can run the system by executing</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker-compose -f docker-compose.api-yml up --build
+</pre></div>
+</div>
+</div></blockquote>
+<p>which starts the Neo4J database and afterwards the
+Django API which receives the requests from the user-interface and calls <code class="docutils literal notranslate"><span class="pre">get_recommendations</span></code> for a list of recommendations.</p>
+<p>However, now you have a recommender system with an empty database. The Comment Recommendation Framework offers two solutions
+for this problem. One the one hand, we provide a news agency scraper where you only have to write the methods that define
+the xpaths or css to extract the article and comment data from the response of the news agency site.</p>
+<p>On the other hand, we provide a module to import a csv dataset into the Neo4J database.</p>
+</section>
+<section id="quick-start-news-agency-scraper">
+<h2>Quick Start - News Agency Scraper<a class="headerlink" href="#quick-start-news-agency-scraper" title="Permalink to this heading"></a></h2>
+<p>If you want to scrape news agencies to fill the database, the package creates a folder <code class="docutils literal notranslate"><span class="pre">NewsAgencyScraper</span></code> and
+<code class="docutils literal notranslate"><span class="pre">docker-compose.scraping.yml</span></code> to run the scraper.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">NewsAgencyScraper</span></code>, you find a folder called <code class="docutils literal notranslate"><span class="pre">spiders</span></code> with
+a file called <code class="docutils literal notranslate"><span class="pre">NewsAgencySpyder</span></code>. To scrape a news agency site, you have to add a file like <code class="docutils literal notranslate"><span class="pre">NewsAgencySpyder</span></code> for
+every news agency. Here, we write the methods to extract the article and comment data from the news agency site. Every
+news agency site has a different structure. This is the reason why we have to add a new class for every agency.</p>
+<p>If you use the news agency scraper as we provide it, you will store two type of nodes in your Neo4j database.
+First, article nodes and comment nodes that are connected to the article node they appeared under.</p>
+<dl class="simple">
+<dt>The article node has the following properties:</dt><dd><ul class="simple">
+<li><p>article_title: Article title</p></li>
+<li><p>keywords: Keywords of the article</p></li>
+<li><p>news_agency: News Agency where the article has been published</p></li>
+<li><p>pub_date: Publication date of the article</p></li>
+<li><p>url: URL of the article</p></li>
+<li><p>embedding: Embedding of a property of the article.</p></li>
+</ul>
+</dd>
+<dt>The comment node has the following properties:</dt><dd><ul class="simple">
+<li><p>text: Comment text</p></li>
+<li><p>embedding: Embedding of the comment text</p></li>
+</ul>
+</dd>
+</dl>
+<p>Let`s write a class for the Washington Times together.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to check the <code class="docutils literal notranslate"><span class="pre">robots.txt</span></code> of a site, before scraping it. If the host of the website forbid the scraping
+of their site, then we have to respect this. Scrapy always checks the robots.txt before scraping, but you should check the
+site yourself before writing a scraper you are not allowed to use or ask the news agency for permission to scrape
+their site.</p>
+</div>
+<p>If we first, open the <code class="docutils literal notranslate"><span class="pre">NewsAgencySpyder</span></code> file, we see</p>
+<a class="reference internal image-reference" href="_images/NewsAgencySpyder1.png"><img alt="_images/NewsAgencySpyder1.png" src="_images/NewsAgencySpyder1.png" style="width: 600px;" /></a>
+<p>First, we have to rename the file and the class to the news agency, we want to scrape. So for us, this would be
+<code class="docutils literal notranslate"><span class="pre">WashingtonTimesSpyder</span></code>. Don’t forget to change the global <code class="docutils literal notranslate"><span class="pre">name</span></code> variable, to the name of the class. This is
+the name scrapy uses for our spyder.</p>
+<p>Next, we have to write the name and url of the news agency, and the xpath for the articles on the start page of the news agency in the instance variables in
+the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method. The xpath gives us a list of the urls of all articles present on the start page of news agency.</p>
+<p>For example, the article on the start page of the Washington Times all have the same HTML structure to get the url of the article,
+we want to scrape.</p>
+<a class="reference internal image-reference" href="_images/NewsAgencySpyder3.png"><img alt="_images/NewsAgencySpyder3.png" src="_images/NewsAgencySpyder3.png" style="width: 600px;" /></a>
+<p>Therefore, our <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method looks like this:</p>
+<a class="reference internal image-reference" href="_images/NewsAgencySpyder2.png"><img alt="_images/NewsAgencySpyder2.png" src="_images/NewsAgencySpyder2.png" style="width: 600px;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Here, you see the first pitfall when scraping news agencies. To scraper the different article, we want to extract
+the url of the <code class="docutils literal notranslate"><span class="pre">a</span></code> tag. However, if you look closely you notice that this is only a relative address. Some news
+agencies use a relative href and some use a complete address. This is important because our system only follows urls
+that contain the <code class="docutils literal notranslate"><span class="pre">news_agency_url</span></code>. We do this so we don’t query links to other websites by accident. Therefore,
+if you want to scrape a site that uses relative addresses please set <code class="docutils literal notranslate"><span class="pre">self.is_relative_urls=True</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To learn more about <code class="docutils literal notranslate"><span class="pre">xpaths</span></code> and how to extract data from the response of the website, please visit (<a class="reference external" href="https://docs.scrapy.org/en/latest/topics/selectors.html">https://docs.scrapy.org/en/latest/topics/selectors.html</a>)</p>
+</div>
+<p>In the next step, we write the methods to extract the data from the article and the comment section. For this, we
+complete the methods <code class="docutils literal notranslate"><span class="pre">extract_article_data</span></code> and <code class="docutils literal notranslate"><span class="pre">extract_comment_section_data</span></code> with the xpaths.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">extract_article_data</span></code>, we have to extract the article title and the publication date of the article.
+In our example of the Washington Times, we find the article title and publication date under:</p>
+<a class="reference internal image-reference" href="_images/NewsAgencySpyder4.png"><img alt="_images/NewsAgencySpyder4.png" src="_images/NewsAgencySpyder4.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="_images/NewsAgencySpyder5.png"><img alt="_images/NewsAgencySpyder5.png" src="_images/NewsAgencySpyder5.png" style="width: 600px;" /></a>
+<p>We save the data in a Scrapy ItemLoader which we then return.
+Now, <code class="docutils literal notranslate"><span class="pre">extract_article_data</span></code> looks like this:</p>
+<a class="reference internal image-reference" href="_images/NewsAgencySpyder6.png"><img alt="_images/NewsAgencySpyder6.png" src="_images/NewsAgencySpyder6.png" style="width: 600px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you would like to know more about the ItemLoader, please visit: <a class="reference external" href="https://docs.scrapy.org/en/latest/topics/loaders.html">https://docs.scrapy.org/en/latest/topics/loaders.html</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you would like to scrape other data from the article or comments and store them in the database. Please refer to
+<a class="reference external" href="update_db_schema.html">Update Database Schema</a> document</p>
+</div>
+<p>Next, we extract the comments from the comment section of the article and store them in the database.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many news agencies load their comment section dynamically. In such  a case, we need to use selenium and query the
+comment section in a separate step.</p>
+</div>
+<p>The Washington Times  in our example loads the comment section dynamically with a different URL. Therefore, we have to load the
+article again to query the source address of the comment section from the iframe in the response and with this address, query the actual comment section.
+Some news agencies load the comments dynamically with a button. Therefore, you might have to use the webdriver to click
+the button until all comments are loaded like we did here:</p>
+<p>Now <code class="docutils literal notranslate"><span class="pre">extract_comment_section_data</span></code> looks like this:</p>
+<a class="reference internal image-reference" href="_images/NewsAgencySpyder7.png"><img alt="_images/NewsAgencySpyder7.png" src="_images/NewsAgencySpyder7.png" style="width: 600px;" /></a>
+<p>At last you have to add the Spyder you want to run in the <code class="docutils literal notranslate"><span class="pre">run_scraper</span></code> file. Here, you have to update the <code class="docutils literal notranslate"><span class="pre">crawl</span></code>
+method with <code class="docutils literal notranslate"><span class="pre">yield</span> <span class="pre">runner.crawl(WashingtonTimesSpyder)</span></code> so that the method looks like:</p>
+<a class="reference internal image-reference" href="_images/NewsAgencySpyder8.png"><img alt="_images/NewsAgencySpyder8.png" src="_images/NewsAgencySpyder8.png" style="width: 1000px;" /></a>
+<p>You have to add this command for every Spyder you want to run.</p>
+<p>And that’s it! Now, we can scrape the Washington Times by starting the scraper with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker-compose -f docker-compose.scrapingl.yml up --build
+</pre></div>
+</div>
+</section>
+<section id="quick-start-compute-embeddings">
+<h2>Quick Start - Compute Embeddings<a class="headerlink" href="#quick-start-compute-embeddings" title="Permalink to this heading"></a></h2>
+<p>Afterwards you have to implement the embedder to compute the embeddings of the nodes.</p>
+<p>For this, you have to open <code class="docutils literal notranslate"><span class="pre">embedding_model</span></code> in <code class="docutils literal notranslate"><span class="pre">Embedder</span></code> where you implement the embedding method to compute the
+embeddings.</p>
+<a class="reference internal image-reference" href="_images/Embedder1.png"><img alt="_images/Embedder1.png" src="_images/Embedder1.png" style="width: 1200px;" /></a>
+<p>Afterwards you have to update <code class="docutils literal notranslate"><span class="pre">run_embedder</span></code> where you have to choose which property of the article node you would like
+to embed.</p>
+<a class="reference internal image-reference" href="_images/Embedder2.png"><img alt="_images/Embedder2.png" src="_images/Embedder2.png" style="width: 1200px;" /></a>
+<p>Then you run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker-compose -f docker-compose.embeded.yml up --build
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not forget to run the embedder every time you scrape new nodes because the database utils method only queries nodes
+that have an embedding.</p>
+</div>
+</section>
+<section id="quick-start-read-csv-dataset">
+<h2>Quick Start - Read CSV Dataset<a class="headerlink" href="#quick-start-read-csv-dataset" title="Permalink to this heading"></a></h2>
+<p>If you have a dataset you would like to use to test your prototype, you can load a CSV dataset into the Neo4J database.
+The data are stored in the same format like for the news agency scraper.</p>
+<dl class="simple">
+<dt>The article node has the following properties:</dt><dd><ul class="simple">
+<li><p>article_title: Article title</p></li>
+<li><p>keywords: Keywords of the article</p></li>
+<li><p>news_agency: News Agency where the article has been published</p></li>
+<li><p>pub_date: Publication date of the article</p></li>
+<li><p>url: URL of the article</p></li>
+<li><p>embedding: Embedding of a property of the article.</p></li>
+</ul>
+</dd>
+<dt>The comment node has the following properties:</dt><dd><ul class="simple">
+<li><p>text: Comment text</p></li>
+<li><p>embedding: Embedding of the comment text</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need to store other properties or nodes in the Neo4J database. Please refer to
+<a class="reference external" href="update_db_schema.html">Update Database Schema</a></p>
+</div>
+<p>Like for the news agency scraper, we will create an example together. For this, we use the New York Times dataset from
+Kaggle (<a class="reference external" href="https://www.kaggle.com/datasets/aashita/nyt-comments">https://www.kaggle.com/datasets/aashita/nyt-comments</a>).</p>
+<p>First, we create a <code class="docutils literal notranslate"><span class="pre">data</span></code> folder inside of the <code class="docutils literal notranslate"><span class="pre">Read_CSV</span></code> folder where we store the csv files, we would like to
+import into the database.</p>
+<p>Next, open the <code class="docutils literal notranslate"><span class="pre">read_CSV</span></code> file and write the file paths in the <code class="docutils literal notranslate"><span class="pre">main</span></code> method into  the list. We assume that you
+have separate files for article and comments. If not you might need to change some methods.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note that the program will run inside a docker container. Write the file path accordingly like in our example.</p>
+</div>
+<p>In the next step, we  update the <code class="docutils literal notranslate"><span class="pre">__store_article</span></code> method and write the column names for the different article node
+properties in the placeholder.</p>
+<a class="reference internal image-reference" href="_images/ReadCSV1.png"><img alt="_images/ReadCSV1.png" src="_images/ReadCSV1.png" style="width: 600px;" /></a>
+<p>Then, we update the methods needed to import the comment for the articles.
+First, we update <code class="docutils literal notranslate"><span class="pre">store_comments_in_db</span></code> with the column name for the article id to check if the article exists in the
+database before we store a comment in the database and try to connect to the article.</p>
+<a class="reference internal image-reference" href="_images/ReadCSV2.png"><img alt="_images/ReadCSV2.png" src="_images/ReadCSV2.png" style="width: 600px;" /></a>
+<p>Afterwards, we add the  column names in the <code class="docutils literal notranslate"><span class="pre">_store_comment</span></code> method.</p>
+<img alt="_images/ReadCSV3.png" src="_images/ReadCSV3.png" />
+<p>And that’s it! Now we can import CSV datasets into our Neo4J database by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker-compose -f docker-compose.csv.yml up --build
+</pre></div>
+</div>
+</section>
+<section id="quick-start-user-interface">
+<h2>Quick Start - User Interface<a class="headerlink" href="#quick-start-user-interface" title="Permalink to this heading"></a></h2>
+<p>After you have set up your recommendation system and filled the database with data, you probably need a user interface
+so that you can test your system.</p>
+<p>For this, our package provides a simple chrome extension to interact with different news agency comment sections.
+The chrome extension allows you to highlight a comment in the comment section and to send the comment to the Django
+backend sever to request recommendations. The recommendations are then rendered as a list in the extension.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the chrome extension does not work on the news agency site you would like to interact with. You might
+need to update the <code class="docutils literal notranslate"><span class="pre">contentScript</span></code> to extract the necessary information’s like keywords or the selected comment the
+user is interested in.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to use your own user-interface or to test a different approach, you only have to send a GET request to
+the Django API. To change the user-interface, please  visit <a class="reference external" href="user_interface.html">Update User-Interface</a></p>
+</div>
+<p>The files for our chrome extension are in the <code class="docutils literal notranslate"><span class="pre">UI</span></code> folder. First you have to install all necessary npm packages by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ npm install
+</pre></div>
+</div>
+<p>Your system will then install all libraries from <code class="docutils literal notranslate"><span class="pre">packages.json</span></code>.</p>
+<p>Afterwards you can run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ npm run build
+</pre></div>
+</div>
+<p>This creates a optimized production build of our chrome extension which we can load in our browser.</p>
+<p>Now, we have <code class="docutils literal notranslate"><span class="pre">build</span></code> folder that we can use.</p>
+<p>To install the extension in our browser, we have to open our chromium browser and open the <code class="docutils literal notranslate"><span class="pre">extensions</span></code> under <code class="docutils literal notranslate"><span class="pre">more</span> <span class="pre">tools</span></code>.</p>
+<p>Here, you have to activate the <code class="docutils literal notranslate"><span class="pre">developer</span> <span class="pre">mode</span></code> and the click <code class="docutils literal notranslate"><span class="pre">load</span> <span class="pre">unpacked</span></code>. There you select the <code class="docutils literal notranslate"><span class="pre">build</span></code> folder,
+we just build and our extension is ready to use. Now you can select a comment in the comment section of a news agency
+and the extension will send a request to the API. Afterwards, it waits for the response with the recommendations which
+it will render.</p>
+<p>The usage of the user-interface is fairly easy. You just copy the comment you are interested in from the comment section and
+paste it in the textfield in the Chrome Extension.</p>
+<a class="reference internal image-reference" href="_images/User-Interface-Usage.png"><img alt="_images/User-Interface-Usage.png" src="_images/User-Interface-Usage.png" style="width: 1200px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="update_db_schema.html" class="btn btn-neutral float-right" title="Update Database Schema" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Anonymous.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

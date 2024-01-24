@@ -1,0 +1,334 @@
+Getting Started
+===============
+The Comment Recommendation Framework is a framework that encourages rapid prototype development for comment recommendation
+systems. It takes care of most of the tedious work of setting up the infrastructure of a recommendation system that can
+be used in a real-world setting and additionally provides data import and collections modules, so you can focus on
+developing more sophisticated recommendation models.
+
+Quick Start - Build the package
+***********
+
+We assume that you have installed Python and created a virtual environment.
+Then you run in the `comment-recommendation-framework` folder where the `setup.py` is:
+
+
+    .. code-block:: bash
+
+        $ python3 -m build
+
+
+.. note::
+    Please make sure that the `build` package is installed. Otherwise, you cannot build the package.
+
+Quick Start - Use the Package
+*****************************
+
+Switch to the folder where you want to create your comment recommendation prototype and run:
+
+
+    .. code-block:: bash
+
+        $ pip install <path_to_whl_file>
+        $ python3 -m comment_recommendation_framework
+
+
+The package then asks you different questions to determine which moduls you need.
+Af first, it asks you if you want to create the recommendation system template.
+Afterwards, it asks if you want to scrape news agencies to fill the database or if you want to import a csv dataset
+into the database.
+
+
+Create an .env file
+********************
+
+To run properly, the system needs some environment variables. Therefore, please add ``.env`` with the following values
+
+    * NEO4J_PASSWORD= <PASSWORD OF YOUR CHOICE>
+    * NEO4J_BOLT_URL='bolt://neo4j:<NEO4J PASSWORD>@neo4j:7687'
+    * BUTTON_CLICK_SLEEP_TIME=<Time in Seconds> (Adds a pause to the load button method to give the driver time to load the next button)
+
+
+Quick Start - Recommender System
+********************************
+
+The package asks you if you want to create a template project.
+If you answer with yes you will get complete recommendation
+systems where you only have to add the recommendation model in ``model.py`` in the ``Model`` folder. You can add here
+any model you want, it only has to use the interface method ``get_recommendations`` which returns a list of strings
+(the recommendations).
+
+Then you can run the system by executing
+
+    .. code-block:: bash
+
+        $ docker-compose -f docker-compose.api-yml up --build
+
+which starts the Neo4J database and afterwards the
+Django API which receives the requests from the user-interface and calls ``get_recommendations`` for a list of recommendations.
+
+However, now you have a recommender system with an empty database. The Comment Recommendation Framework offers two solutions
+for this problem. One the one hand, we provide a news agency scraper where you only have to write the methods that define
+the xpaths or css to extract the article and comment data from the response of the news agency site.
+
+On the other hand, we provide a module to import a csv dataset into the Neo4J database.
+
+Quick Start - News Agency Scraper
+*********************************
+
+If you want to scrape news agencies to fill the database, the package creates a folder ``NewsAgencyScraper`` and
+``docker-compose.scraping.yml`` to run the scraper.
+
+In ``NewsAgencyScraper``, you find a folder called ``spiders`` with
+a file called ``NewsAgencySpyder``. To scrape a news agency site, you have to add a file like ``NewsAgencySpyder`` for
+every news agency. Here, we write the methods to extract the article and comment data from the news agency site. Every
+news agency site has a different structure. This is the reason why we have to add a new class for every agency.
+
+If you use the news agency scraper as we provide it, you will store two type of nodes in your Neo4j database.
+First, article nodes and comment nodes that are connected to the article node they appeared under.
+
+The article node has the following properties:
+    * article_title: Article title
+    * keywords: Keywords of the article
+    * news_agency: News Agency where the article has been published
+    * pub_date: Publication date of the article
+    * url: URL of the article
+    * embedding: Embedding of a property of the article.
+
+The comment node has the following properties:
+    * text: Comment text
+    * embedding: Embedding of the comment text
+
+Let`s write a class for the Washington Times together.
+
+.. warning::
+    Make sure to check the ``robots.txt`` of a site, before scraping it. If the host of the website forbid the scraping
+    of their site, then we have to respect this. Scrapy always checks the robots.txt before scraping, but you should check the
+    site yourself before writing a scraper you are not allowed to use or ask the news agency for permission to scrape
+    their site.
+
+If we first, open the ``NewsAgencySpyder`` file, we see
+
+.. image:: images/NewsAgencySpyder1.png
+    :width: 600
+
+First, we have to rename the file and the class to the news agency, we want to scrape. So for us, this would be
+``WashingtonTimesSpyder``. Don't forget to change the global ``name`` variable, to the name of the class. This is
+the name scrapy uses for our spyder.
+
+Next, we have to write the name and url of the news agency, and the xpath for the articles on the start page of the news agency in the instance variables in
+the ``__init__`` method. The xpath gives us a list of the urls of all articles present on the start page of news agency.
+
+For example, the article on the start page of the Washington Times all have the same HTML structure to get the url of the article,
+we want to scrape.
+
+.. image:: images/NewsAgencySpyder3.png
+    :width: 600
+
+Therefore, our ``__init__`` method looks like this:
+
+.. image:: images/NewsAgencySpyder2.png
+    :width: 600
+
+.. warning::
+    Here, you see the first pitfall when scraping news agencies. To scraper the different article, we want to extract
+    the url of the ``a`` tag. However, if you look closely you notice that this is only a relative address. Some news
+    agencies use a relative href and some use a complete address. This is important because our system only follows urls
+    that contain the ``news_agency_url``. We do this so we don't query links to other websites by accident. Therefore,
+    if you want to scrape a site that uses relative addresses please set ``self.is_relative_urls=True``.
+
+.. note::
+    To learn more about ``xpaths`` and how to extract data from the response of the website, please visit (https://docs.scrapy.org/en/latest/topics/selectors.html)
+
+In the next step, we write the methods to extract the data from the article and the comment section. For this, we
+complete the methods ``extract_article_data`` and ``extract_comment_section_data`` with the xpaths.
+
+In ``extract_article_data``, we have to extract the article title and the publication date of the article.
+In our example of the Washington Times, we find the article title and publication date under:
+
+.. image:: images/NewsAgencySpyder4.png
+    :width: 600
+.. image:: images/NewsAgencySpyder5.png
+    :width: 600
+
+We save the data in a Scrapy ItemLoader which we then return.
+Now, ``extract_article_data`` looks like this:
+
+.. image:: images/NewsAgencySpyder6.png
+    :width: 600
+
+
+.. note::
+    If you would like to know more about the ItemLoader, please visit: https://docs.scrapy.org/en/latest/topics/loaders.html
+
+.. note::
+    If you would like to scrape other data from the article or comments and store them in the database. Please refer to
+    `Update Database Schema <update_db_schema.html>`_ document
+
+
+
+Next, we extract the comments from the comment section of the article and store them in the database.
+
+.. note::
+    Many news agencies load their comment section dynamically. In such  a case, we need to use selenium and query the
+    comment section in a separate step.
+
+The Washington Times  in our example loads the comment section dynamically with a different URL. Therefore, we have to load the
+article again to query the source address of the comment section from the iframe in the response and with this address, query the actual comment section.
+Some news agencies load the comments dynamically with a button. Therefore, you might have to use the webdriver to click
+the button until all comments are loaded like we did here:
+
+Now ``extract_comment_section_data`` looks like this:
+
+.. image:: images/NewsAgencySpyder7.png
+    :width: 600
+
+At last you have to add the Spyder you want to run in the ``run_scraper`` file. Here, you have to update the ``crawl``
+method with ``yield runner.crawl(WashingtonTimesSpyder)`` so that the method looks like:
+
+.. image:: images/NewsAgencySpyder8.png
+    :width: 1000
+
+You have to add this command for every Spyder you want to run.
+
+And that's it! Now, we can scrape the Washington Times by starting the scraper with:
+
+.. code-block:: bash
+
+        $ docker-compose -f docker-compose.scrapingl.yml up --build
+
+Quick Start - Compute Embeddings
+********************************
+
+Afterwards you have to implement the embedder to compute the embeddings of the nodes.
+
+For this, you have to open ``embedding_model`` in ``Embedder`` where you implement the embedding method to compute the
+embeddings.
+
+.. image:: images/Embedder1.png
+    :width: 1200
+
+Afterwards you have to update ``run_embedder`` where you have to choose which property of the article node you would like
+to embed.
+
+.. image:: images/Embedder2.png
+    :width: 1200
+
+Then you run:
+
+.. code-block:: bash
+
+    $ docker-compose -f docker-compose.embeded.yml up --build
+
+.. warning::
+    Do not forget to run the embedder every time you scrape new nodes because the database utils method only queries nodes
+    that have an embedding.
+
+Quick Start - Read CSV Dataset
+*********************************
+
+If you have a dataset you would like to use to test your prototype, you can load a CSV dataset into the Neo4J database.
+The data are stored in the same format like for the news agency scraper.
+
+The article node has the following properties:
+    * article_title: Article title
+    * keywords: Keywords of the article
+    * news_agency: News Agency where the article has been published
+    * pub_date: Publication date of the article
+    * url: URL of the article
+    * embedding: Embedding of a property of the article.
+
+The comment node has the following properties:
+    * text: Comment text
+    * embedding: Embedding of the comment text
+
+.. note::
+    If you need to store other properties or nodes in the Neo4J database. Please refer to
+    `Update Database Schema <update_db_schema.html>`_
+
+Like for the news agency scraper, we will create an example together. For this, we use the New York Times dataset from
+Kaggle (https://www.kaggle.com/datasets/aashita/nyt-comments).
+
+First, we create a ``data`` folder inside of the ``Read_CSV`` folder where we store the csv files, we would like to
+import into the database.
+
+Next, open the ``read_CSV`` file and write the file paths in the ``main`` method into  the list. We assume that you
+have separate files for article and comments. If not you might need to change some methods.
+
+.. warning::
+    Please note that the program will run inside a docker container. Write the file path accordingly like in our example.
+
+In the next step, we  update the ``__store_article`` method and write the column names for the different article node
+properties in the placeholder.
+
+.. image:: images/ReadCSV1.png
+    :width: 600
+
+Then, we update the methods needed to import the comment for the articles.
+First, we update ``store_comments_in_db`` with the column name for the article id to check if the article exists in the
+database before we store a comment in the database and try to connect to the article.
+
+.. image:: images/ReadCSV2.png
+    :width: 600
+
+Afterwards, we add the  column names in the ``_store_comment`` method.
+
+.. image:: images/ReadCSV3.png
+
+And that's it! Now we can import CSV datasets into our Neo4J database by running:
+
+.. code-block:: bash
+
+        $ docker-compose -f docker-compose.csv.yml up --build
+
+
+Quick Start - User Interface
+****************************
+
+After you have set up your recommendation system and filled the database with data, you probably need a user interface
+so that you can test your system.
+
+For this, our package provides a simple chrome extension to interact with different news agency comment sections.
+The chrome extension allows you to highlight a comment in the comment section and to send the comment to the Django
+backend sever to request recommendations. The recommendations are then rendered as a list in the extension.
+
+
+.. warning::
+    If the chrome extension does not work on the news agency site you would like to interact with. You might
+    need to update the ``contentScript`` to extract the necessary information's like keywords or the selected comment the
+    user is interested in.
+
+.. note::
+    If you want to use your own user-interface or to test a different approach, you only have to send a GET request to
+    the Django API. To change the user-interface, please  visit `Update User-Interface <user_interface.html>`_
+
+The files for our chrome extension are in the ``UI`` folder. First you have to install all necessary npm packages by running:
+
+.. code-block:: bash
+
+        $ npm install
+
+
+Your system will then install all libraries from ``packages.json``.
+
+Afterwards you can run:
+
+.. code-block:: bash
+
+    $ npm run build
+
+This creates a optimized production build of our chrome extension which we can load in our browser.
+
+Now, we have ``build`` folder that we can use.
+
+To install the extension in our browser, we have to open our chromium browser and open the ``extensions`` under ``more tools``.
+
+Here, you have to activate the ``developer mode`` and the click ``load unpacked``. There you select the ``build`` folder,
+we just build and our extension is ready to use. Now you can select a comment in the comment section of a news agency
+and the extension will send a request to the API. Afterwards, it waits for the response with the recommendations which
+it will render.
+
+The usage of the user-interface is fairly easy. You just copy the comment you are interested in from the comment section and
+paste it in the textfield in the Chrome Extension.
+
+.. image:: images/User-Interface-Usage.png
+    :width: 1200
