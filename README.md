@@ -86,12 +86,12 @@ Then you can import the `build` folder in a chromium browser.
 
 
 ## Maintainers:
-* Anonymous
+* Jan Steimann
 
 ## Contributors:
-* Anonymous
+* Jan Steimann
 
 ## License:
-Copyright(c) 2022 - today Anonymous
+Copyright(c) 2024 - today Jan Steimann
 
 Distributed under the [MIT License](LICENSE)
