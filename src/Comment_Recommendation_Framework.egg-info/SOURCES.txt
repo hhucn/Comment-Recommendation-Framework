@@ -1,13 +1,11 @@
 LICENSE
 MANIFEST.in
 README.md
-pyproject.toml
 setup.py
 src/__init__.py
 src/Comment_Recommendation_Framework.egg-info/PKG-INFO
 src/Comment_Recommendation_Framework.egg-info/SOURCES.txt
 src/Comment_Recommendation_Framework.egg-info/dependency_links.txt
-src/Comment_Recommendation_Framework.egg-info/requires.txt
 src/Comment_Recommendation_Framework.egg-info/top_level.txt
 src/comment_recommendation_framework/Dockerfile
 src/comment_recommendation_framework/Pipfile
@@ -58,6 +56,7 @@ src/comment_recommendation_framework/RecommendationSystem/NewsAgencyScraper/News
 src/comment_recommendation_framework/RecommendationSystem/Read_CSV/__init__.py
 src/comment_recommendation_framework/RecommendationSystem/Read_CSV/read_csv.py
 src/comment_recommendation_framework/RecommendationSystem/UI/README.md
+src/comment_recommendation_framework/RecommendationSystem/UI/package-lock.json
 src/comment_recommendation_framework/RecommendationSystem/UI/package.json
 src/comment_recommendation_framework/RecommendationSystem/UI/public/Focus_Logo.png
 src/comment_recommendation_framework/RecommendationSystem/UI/public/Spiegel_Logo_2.png
@@ -86,6 +85,7 @@ src/comment_recommendation_framework/RecommendationSystem/UI/src/components/NoSe
 src/comment_recommendation_framework/RecommendationSystem/UI/src/components/NoSuggestions.jsx
 src/comment_recommendation_framework/RecommendationSystem/UI/src/components/SelectTextButton.jsx
 src/comment_recommendation_framework/RecommendationSystem/UI/src/components/SuggestionList.jsx
+src/comment_recommendation_framework/RecommendationSystem/docs/__init__.py
 src/comment_recommendation_framework/RecommendationSystem/docs/conf.py
 src/comment_recommendation_framework/RecommendationSystem/test/__init__.py
 src/comment_recommendation_framework/RecommendationSystem/test/test_db.py

@@ -1,5 +1,0 @@
-django
-neomodel
-scrapy
-selenium
-torch
