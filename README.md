@@ -6,6 +6,8 @@ relieves the scientist from the majority of the technical code and only prototyp
 more time in the development of recommendation models and less time has to be spent in the development of a prototype 
 while at the same time getting prototypes that can be used in real-world settings.
 
+![PyPI publish workflow](https://github.com/github/docs/actions/workflows/publish.yml/badge.svg)
+
 ## Setup
 Ensure that the following tools are installed:
 * Docker
